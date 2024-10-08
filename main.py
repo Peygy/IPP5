@@ -43,8 +43,12 @@ async def get_user_by_id(id: int):
 async def post_user(user: User):
     USERS.lists.append(user)
 
+@router.delete("/delete_user/{id}")
+async def delete_user(id: int):
+    USERS.lists.pop(id)
 
-@router.post("/change_user_by_id/")
+
+@router.put("/change_user_by_id")
 async def change_user(user: User):
     global USERS
     for i in USERS.lists:
